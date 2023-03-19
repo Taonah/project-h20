@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>   
+<body>  
+    <h1>Welcome TO Drop</h1>
+
+<style>
+       body{background-color:rgb(24, 126, 167);} 
+       p{color:blanchedalmond}
+       p{overflow: auto}
+       h1{color: rgb(19, 127, 141);}
+       </style>
+    <h3>helping you locate the nearest clean water source</h3>
+
+<link rel="stylesheet" href="water.css">
+    <div>
+        <button onclick="geolocator()">
+          Click to get location
+        </button>
+        <p id="paraGraph"></p>
+  
+  
+    </div>
+    <script>
+        var paraGraph = document.getElementById("paraGraph");
+        var user_loc = navigator.geolocation;
+      
+        function geolocator() {
+            if(user_loc) {
+                user_loc.getCurrentPosition(success);
+            } else {
+                "Your browser doesn't support geolocation API";
+            }
+        }
+      
+        function success(data) {
+            var lat = data.coords.latitude;
+            var long = data.coords.longitude;
+            paraGraph.innerHTML = "Latitude: "
+            + lat
+            + "<br>Longitude: "
+            + long;
+        }
+    </script>
+</body>
+  
+</html>
